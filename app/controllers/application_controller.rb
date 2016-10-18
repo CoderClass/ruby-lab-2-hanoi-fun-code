@@ -18,4 +18,17 @@ class ApplicationController < ActionController::Base
   def signed_in?
     session[:user_id] ? true : false
   end
+
+  def require_login
+    if !signed_in?
+      flash[:info] = "You must logged in before see this page"
+      redirect_to root_path
+    end
+  end
+
+  def skip_if_logged_in
+    if signed_in?
+      redirect_to users_path
+    end
+  end
 end
