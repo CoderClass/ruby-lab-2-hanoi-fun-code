@@ -36,16 +36,13 @@
       <% end %>
         </ul>
     </div>
+				<div class="nav-item">
+					<%= flash_messages %>
+				</div>
   </nav>
 
 
-	<% flash.each do |key, value|%>
-	<div class="alert alert-danger">
-	<%= value %>
-	</div>
-	<% end %>
-
-  <%= yield %>
+<%= yield %>
 
   <footer class="footer-12">
     <div class="container">
