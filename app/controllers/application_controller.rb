@@ -4,8 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
 	helper_method :current_user #provide access to :current_user function for views
-
-
+  helper_method :signed_in?
 
 	protected
 	#this function getting data from session object to pass to view layer
@@ -15,4 +14,8 @@ class ApplicationController < ActionController::Base
 			@current_user = User.find session[:user_id]
 		end
 	end
+
+  def signed_in?
+    session[:user_id] ? true : false
+  end
 end

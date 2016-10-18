@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
 				redirect_to root_path
 			else
 				flash.now[:error] = "Incorrect password."
-				render 'new'	
+				render 'new'
 			end
 		else
 			flash.now[:error] = "User not found."
@@ -20,5 +20,8 @@ class SessionsController < ApplicationController
 	end
 
   def destroy
+    session[:user_id] = nil
+    flash[:success] = "Logout successfully"
+    redirect_to root_path
   end
 end
