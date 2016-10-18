@@ -25,10 +25,22 @@
         <li class="nav-item">
           <a class="nav-link" href="<%= users_path %>">Browse Profiles</a>
         </li>
+				<% if current_user %>
+        <li class="nav-item">
+				<div class="nav-link">			Welcome	<%= current_user.name %>!</div>
+        </li>
+				<% end %>
       </ul>
     </div>
   </nav>
 
+
+	<% flash.each do |key, value|%>
+	<div class="alert alert-danger">
+	<%= value %>
+	</div>
+	<% end %>
+	
   <%= yield %>
 
   <footer class="footer-12">

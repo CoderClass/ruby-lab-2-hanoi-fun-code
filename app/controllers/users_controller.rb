@@ -14,7 +14,8 @@ class UsersController < ApplicationController
 			flash[:success] = "User created successfully"
 			redirect_to new_session_path
 		else
-			render 'new'
+			flash[:error] = @user.errors.full_messages.to_sentence
+			redirect_to root_path
 		end
 	end
 
